@@ -1,0 +1,28 @@
+name: Test Nect Action
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-nect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test nect with dummy repo
+        uses: asmacdo/nect@main
+        with:
+          name: requests
+          marker: requires_requests_pr
+          default_install: echo "Running default install for requests"
+          source_install: echo "Running source install for requests"
+
+      - name: Test nect with another repo
+        uses: asmacdo/nect@main
+        with:
+          name: flask
+          marker: requires_flask_pr
+          default_install: pip install flask
+          source_install: pip install -e .
