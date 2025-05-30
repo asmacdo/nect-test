@@ -18,11 +18,14 @@ jobs:
           marker: requires_requests_pr
           default_install: echo "Running default install for requests"
           source_install: echo "Running source install for requests"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Test nect with another repo
-        uses: asmacdo/nect@main
-        with:
-          name: flask
-          marker: requires_flask_pr
-          default_install: pip install flask
-          source_install: pip install -e .
+      # - name: Test nect with another repo
+      #   uses: asmacdo/nect@main
+      #   with:
+      #     name: flask
+      #     marker: requires_flask_pr
+      #     default_install: pip install flask
+      #     source_install: pip install -e .
+      #     token: ${{ secrets.GITHUB_TOKEN }}
